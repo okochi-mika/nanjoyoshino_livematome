@@ -1,0 +1,104 @@
+{
+  "liveId": "2017_5th_anniversary_yokohama",
+  "tourId": "2017_5th_anniversary",
+  "tourName": "南條愛乃 5th Anniversary Live -catalmoa-",
+  "tourType": "event",
+  "venueId": "yokohama",
+  "venueName": "パシフィコ横浜 国立大ホール",
+  "prefecture": "神奈川県",
+  "date": "20171225",
+  "setlistStatus": "fan-sourced",
+  "setlistSource": "ファンによる参戦記録の投稿サイト「LiveFans」の公演ページを参考にしたセットリストです。公式発表ではありません。MCブレイクは曲ではないため一覧には含めていません。誤りがあれば修正してください。",
+  "tracks": [
+    {
+      "title": "Precious time",
+      "id": "Qw19w9WRGns"
+    },
+    {
+      "title": "君が笑む夕暮れ",
+      "id": "JnhOi4lwOGY"
+    },
+    {
+      "title": "黄昏のスタアライト",
+      "id": "TR_WQo5btXg",
+      "note": "実際は衣装替えの時間のバンドパフォーマンス（南條愛乃の歌唱なし）でした。参考として通常版（歌唱あり）の動画IDを仮に入れてあります。"
+    },
+    {
+      "title": "blue",
+      "id": "mkWvH-JD5qU"
+    },
+    {
+      "title": "0-未来-",
+      "id": "jYFglT0c_Ac"
+    },
+    {
+      "title": "今日もいい天気だよ",
+      "id": "6yCy2Bqq9yw"
+    },
+    {
+      "title": "Gerbera",
+      "id": "eOCQVaAtYRk"
+    },
+    {
+      "title": "believe in myself",
+      "id": "5vEhaIrCSAo"
+    },
+    {
+      "title": "あなたの愛した世界",
+      "id": "xs63T0N36Wo"
+    },
+    {
+      "title": "飛ぶサカナ",
+      "id": "f18ROjUSUM8"
+    },
+    {
+      "title": "Simple feelings",
+      "id": "6R2e8VaTk8Y"
+    },
+    {
+      "title": "idc",
+      "id": "twsWPgPuxYg"
+    },
+    {
+      "title": "リトル・メモリー",
+      "id": "eETQUoDIesU"
+    },
+    {
+      "title": "雪の華",
+      "id": null,
+      "note": "中島美嘉のカバー楽曲。公式チャンネルに動画が見当たらないため未設定です。"
+    },
+    {
+      "title": "白い季節の約束",
+      "id": "iXQYMGjAh8o"
+    },
+    {
+      "title": "優しくつもる言葉の花",
+      "id": "ASbh0B9HybU"
+    },
+    {
+      "title": "ゼロイチキセキ",
+      "id": "y9xv4o1i6nc"
+    },
+    {
+      "title": "きみを探しに",
+      "id": "cQKn9qbRmac"
+    },
+    {
+      "title": "スキップトラベル",
+      "id": "2GVkgZJQQQM"
+    },
+    {
+      "title": "・R・i・n・g・",
+      "id": "He_o-erua4Y"
+    },
+    {
+      "title": "カタルモア",
+      "id": "O4J40jd0WCA"
+    },
+    {
+      "title": "光のはじまり",
+      "id": "8Y5YIZJ3u74"
+    }
+  ]
+}
