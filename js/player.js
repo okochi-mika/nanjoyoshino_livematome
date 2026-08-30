@@ -109,11 +109,16 @@ function shuffleQueue() {
 }
 
 /* ---------- YouTube IFrame API ---------- */
+let _errorRetriedIndex = null;
+
 window.onYouTubeIframeAPIReady = function () {
   ytPlayer = new YT.Player("yt-player", {
     height: "100%",
     width: "100%",
-    playerVars: { rel: 0 },
+    // origin を明示しておくと、一部のブラウザ環境で発生する
+    // 「エラーが発生しました。しばらくしてからもう一度お試しください」
+    // という初期化エラーを避けやすくなる。
+    playerVars: { rel: 0, origin: window.location.origin },
     events: {
       onReady: () => {
         ytReady = true;
@@ -123,8 +128,20 @@ window.onYouTubeIframeAPIReady = function () {
         }
       },
       onStateChange: (e) => {
+        if (e.data === YT.PlayerState.PLAYING) {
+          _errorRetriedIndex = null; // 再生できたので再試行フラグをリセット
+        }
         if (e.data === YT.PlayerState.ENDED) {
           playNext();
+        }
+      },
+      onError: (e) => {
+        // 一時的な読み込み失敗の場合、同じ曲を1回だけ自動で再試行する。
+        const currentIndex = playQueue[queuePos];
+        console.error("YouTubeプレイヤーエラー:", e.data, "track index:", currentIndex);
+        if (currentIndex !== undefined && _errorRetriedIndex !== currentIndex) {
+          _errorRetriedIndex = currentIndex;
+          setTimeout(() => playVideoAtIndex(currentIndex), 800);
         }
       },
     },
