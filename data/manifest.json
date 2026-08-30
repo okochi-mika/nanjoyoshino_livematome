@@ -10,7 +10,7 @@
         {
           "venueId": "kanagawa",
           "liveId": "2023_journeys_trunk_kanagawa",
-          "place": "相模女子大学グリーンホール 大ホール",
+          "place": "相模女子大学グリーンホール",
           "prefecture": "神奈川県",
           "date": "20230423",
           "setlistStatus": "fan-sourced"
@@ -34,7 +34,7 @@
         {
           "venueId": "tokyo",
           "liveId": "2023_journeys_trunk_tokyo",
-          "place": "TACHIKAWA STAGE GARDEN",
+          "place": "立川ステージガーデン",
           "prefecture": "東京都",
           "date": "20230507",
           "setlistStatus": "fan-sourced"
