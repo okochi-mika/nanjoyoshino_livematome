@@ -1,0 +1,195 @@
+/* ============================================================
+   南條愛乃セトリアーカイブ — Direction C「透明感・ガーデン」
+   Tailwind(CDN)のユーティリティに、フォント・色・カード質感などの
+   独自トークンを重ねるための補助スタイルシート。
+   ============================================================ */
+
+:root{
+  --bg: #f6f5ef;
+  --surface: #ffffff;
+  --surface-soft: #efece3;
+  --ink: #3a3730;
+  --muted: #8c8776;
+  --line: #e3ddd0;
+  --sage: #7c9473;
+  --sage-soft: #eef2ea;
+  --lav: #9c8fb5;
+  --lav-soft: #f2eef7;
+  --danger: #b56576;
+}
+
+html, body{
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+}
+
+.font-display{
+  font-family: "Kaisei Decol", serif;
+}
+
+/* 紙っぽさの代わりに、淡いグラデーションと丸みで「庭の空気感」を出すカード */
+.garden-card{
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 14px 30px -22px rgba(80, 70, 50, .35);
+}
+
+.garden-card--soft{
+  background: linear-gradient(180deg, #ffffff, #fbfaf6);
+}
+
+.garden-logo-fallback{
+  background: linear-gradient(135deg, #e4ecdd, #efe7f2);
+  border: 1px solid var(--line);
+}
+
+.pill{
+  display: inline-block;
+  font-size: .7rem;
+  color: var(--sage);
+  background: var(--sage-soft);
+  padding: .15rem .7rem;
+  border-radius: 999px;
+  letter-spacing: .03em;
+}
+
+.pill--lav{
+  color: var(--lav);
+  background: var(--lav-soft);
+}
+
+.pill--muted{
+  color: var(--muted);
+  background: var(--surface-soft);
+}
+
+.btn-garden{
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .8rem;
+  color: #fff;
+  background: linear-gradient(120deg, var(--sage), var(--lav));
+  padding: .55rem 1.1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity .15s ease, transform .15s ease;
+}
+.btn-garden:hover{ opacity: .88; }
+.btn-garden:active{ transform: translateY(1px); }
+
+.btn-garden[disabled]{
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.btn-outline{
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .8rem;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: .5rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.btn-outline:hover{ background: var(--surface-soft); }
+.btn-outline.is-active{
+  color: var(--sage);
+  border-color: var(--sage);
+  background: var(--sage-soft);
+}
+
+.venue-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .9rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.venue-row:last-child{ border-bottom: none; }
+
+.track-row{
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .65rem .75rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background .12s ease;
+}
+.track-row:hover{ background: var(--surface-soft); }
+.track-row.is-playing{
+  background: var(--lav-soft);
+}
+.track-row.is-empty{
+  cursor: not-allowed;
+  opacity: .5;
+}
+
+.track-num{
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  width: 1.75rem;
+  text-align: right;
+  font-size: .8rem;
+}
+
+.heart-btn{
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.05rem;
+  line-height: 1;
+  color: var(--line);
+  transition: color .15s ease, transform .15s ease;
+}
+.heart-btn.is-active{ color: var(--danger); }
+.heart-btn:hover{ transform: scale(1.12); }
+
+.search-hit{
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1rem 1.1rem;
+  background: var(--surface);
+}
+
+a.link-quiet{
+  color: var(--sage);
+  text-decoration: none;
+}
+a.link-quiet:hover{ text-decoration: underline; }
+
+::selection{
+  background: var(--lav-soft);
+}
+
+.scroll-x{
+  overflow-x: auto;
+}
+
+.badge-status{
+  font-size: .65rem;
+  padding: .1rem .5rem;
+  border-radius: 999px;
+  letter-spacing: .02em;
+}
+.badge-status--placeholder{
+  color: #9c7a3c;
+  background: #f7ecd8;
+}
+.badge-status--fan-sourced{
+  color: var(--lav);
+  background: var(--lav-soft);
+}
+.badge-status--official{
+  color: var(--sage);
+  background: var(--sage-soft);
+}

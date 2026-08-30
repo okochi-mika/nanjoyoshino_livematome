@@ -1,0 +1,37 @@
+{
+  "tours": [
+    {
+      "tourId": "2024_fantasic_garden",
+      "tourName": "南條愛乃 Live Tour 2024 ～LIVE of The Fantasic Garden～ supported by animelo",
+      "shortName": "LIVE of The Fantasic Garden",
+      "year": 2024,
+      "logo": null,
+      "venues": [
+        {
+          "venueId": "nagoya",
+          "liveId": "2024_fantasic_garden_nagoya",
+          "place": "Niterra日本特殊陶業市民会館 ビレッジホール",
+          "prefecture": "愛知県",
+          "date": "20240602",
+          "setlistStatus": "placeholder"
+        },
+        {
+          "venueId": "osaka",
+          "liveId": "2024_fantasic_garden_osaka",
+          "place": "大阪国際交流センター 大ホール",
+          "prefecture": "大阪府",
+          "date": "20240623",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "kanagawa",
+          "liveId": "2024_fantasic_garden_kanagawa",
+          "place": "神奈川県民ホール 大ホール",
+          "prefecture": "神奈川県",
+          "date": "20240707",
+          "setlistStatus": "placeholder"
+        }
+      ]
+    }
+  ]
+}

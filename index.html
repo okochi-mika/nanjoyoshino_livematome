@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>南條愛乃セトリアーカイブ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Zen+Maru+Gothic:wght@400;500;700&display=swap">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="border-b border-[var(--line)]">
+  <div class="max-w-5xl mx-auto px-4 py-5 flex items-center justify-between">
+    <a href="index.html" class="font-display text-xl md:text-2xl">南條愛乃セトリアーカイブ</a>
+    <div id="auth-nav" class="flex items-center gap-3"></div>
+  </div>
+</header>
+
+<main class="max-w-5xl mx-auto px-4 py-10 space-y-14">
+
+  <section>
+    <p class="text-sm text-[var(--muted)] max-w-2xl leading-relaxed">
+      南條愛乃さんのワンマンライブ・ツアーのセットリストをまとめたファンサイトです。
+      公演ごとにセトリ順でYouTubeを再生できます。ログインすると、お気に入り登録や
+      参加記録、自分だけのセットリスト作成もできます。
+    </p>
+  </section>
+
+  <section>
+    <h2 class="font-display text-lg mb-4">曲名で探す</h2>
+    <div class="garden-card p-5">
+      <input id="song-search-input" type="text" placeholder="曲名を入力（例: サヨナラ）"
+        class="w-full border border-[var(--line)] rounded-full px-5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--lav)]" />
+      <div id="song-search-results" class="mt-5 space-y-3"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="font-display text-lg mb-4">ツアー一覧</h2>
+    <div id="tour-list" class="grid gap-5 sm:grid-cols-2">
+      <p class="text-sm text-[var(--muted)]">読み込み中…</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="max-w-5xl mx-auto px-4 pb-10 text-xs text-[var(--muted)]">
+  本サイトは非公式のファンサイトです。掲載楽曲は各公式チャンネルのYouTube動画を埋め込み再生しています。
+</footer>
+
+<script src="js/supabase-config.js"></script>
+<script src="js/common.js"></script>
+<script src="js/search.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

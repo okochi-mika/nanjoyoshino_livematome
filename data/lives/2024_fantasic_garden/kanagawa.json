@@ -1,0 +1,105 @@
+{
+  "liveId": "2024_fantasic_garden_kanagawa",
+  "tourId": "2024_fantasic_garden",
+  "tourName": "南條愛乃 Live Tour 2024 ～LIVE of The Fantasic Garden～ supported by animelo",
+  "venueId": "kanagawa",
+  "venueName": "神奈川県民ホール 大ホール",
+  "prefecture": "神奈川県",
+  "date": "20240707",
+  "setlistStatus": "placeholder",
+  "setlistSource": "ファンによるまとめ記事(note)によると、5曲目・16曲目が公演ごとに異なる日替わり枠でした。神奈川公演(ファイナル)では5曲目が「iD*」、16曲目が「この道をあなたと」。それ以外の曲順は大阪公演(06/23)の参戦記録をもとにした暫定のものです。",
+  "tracks": [
+    {
+      "title": "Welcome to The Garden",
+      "id": "gWm3yu6tzlU"
+    },
+    {
+      "title": "ホレヴォ",
+      "id": "D4Qqe9xBAcM"
+    },
+    {
+      "title": "黄昏のスタアライト",
+      "id": "TR_WQo5btXg"
+    },
+    {
+      "title": "ナイショの午睡",
+      "id": "1XWuaKAAAa0"
+    },
+    {
+      "title": "iD*",
+      "id": "tylKViAVdE4"
+    },
+    {
+      "title": "ゆれる金魚鉢",
+      "id": "3LdTESxZ6_8"
+    },
+    {
+      "title": "breathe in",
+      "id": "7jjlXqE49Qs"
+    },
+    {
+      "title": "涙流るるまま",
+      "id": "xGmFccGNsLM"
+    },
+    {
+      "title": "サヨナラの惑星",
+      "id": "VBtP4VR32-Q"
+    },
+    {
+      "title": "物語よ始まれと願う空に",
+      "id": "IAva1iOe54c"
+    },
+    {
+      "title": "シュガーポット",
+      "id": "03KkVLQQDV4"
+    },
+    {
+      "title": "だけど",
+      "id": "Nx7dHQZnimE"
+    },
+    {
+      "title": "MANIFEST",
+      "id": "XsMaiJvMK58"
+    },
+    {
+      "title": "薔薇色Ethereal",
+      "id": "t9XoqS08lKY"
+    },
+    {
+      "title": "閃 -sen-",
+      "id": "aoluUL5DQ24"
+    },
+    {
+      "title": "この道をあなたと",
+      "id": "H5W3srNQZSQ"
+    },
+    {
+      "title": "瓦礫に咲く花",
+      "id": "UjhOjvQPItI"
+    },
+    {
+      "title": "新世界",
+      "id": "zFiqUc6Y0Ro"
+    },
+    {
+      "title": "trust myself",
+      "id": "isxfDo2s7JY"
+    },
+    {
+      "title": "打ち上げて花盛り",
+      "id": "aKQXv_SCBOk"
+    },
+    {
+      "title": "きみを探しに",
+      "id": "cQKn9qbRmac"
+    },
+    {
+      "title": "あなたの愛した世界",
+      "id": "xs63T0N36Wo"
+    },
+    {
+      "title": "またねの魔法",
+      "id": "9dJ1TThdvVA"
+    }
+  ]
+}
