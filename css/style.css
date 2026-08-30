@@ -16,6 +16,8 @@
   --lav: #9c8fb5;
   --lav-soft: #f2eef7;
   --danger: #b56576;
+  --amber: #c08a4e;
+  --amber-soft: #f8ecd9;
 }
 
 html, body{
@@ -45,6 +47,16 @@ html, body{
   border: 1px solid var(--line);
 }
 
+/* 記念イベント用のカード配色（ツアーの緑〜紫と区別するため、暖色系のグラデーションに） */
+.garden-logo-fallback--event{
+  background: linear-gradient(135deg, #f8ecd9, #f6dde0);
+  border: 1px solid var(--line);
+}
+
+.garden-card--event{
+  background: linear-gradient(180deg, #fffdfa, #fdf8f2);
+}
+
 .pill{
   display: inline-block;
   font-size: .7rem;
@@ -63,6 +75,11 @@ html, body{
 .pill--muted{
   color: var(--muted);
   background: var(--surface-soft);
+}
+
+.pill--event{
+  color: var(--amber);
+  background: var(--amber-soft);
 }
 
 .btn-garden{

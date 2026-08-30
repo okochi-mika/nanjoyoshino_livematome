@@ -11,14 +11,20 @@ function renderTourCard(tour) {
       ? `${formatDate(dates[0])} 〜 ${formatDate(dates[dates.length - 1])}`
       : formatDate(dates[0]);
 
+  const isEvent = tour.tourType === "event";
+  const logoClass = isEvent ? "garden-logo-fallback--event" : "garden-logo-fallback";
+  const cardClass = isEvent ? "garden-card--event" : "garden-card--soft";
+  const pillClass = isEvent ? "pill pill--event" : "pill";
+  const logoTextClass = isEvent ? "text-[var(--amber)]" : "text-[var(--sage)]";
+
   const logoInner = tour.logo
     ? `<img src="${escapeHtml(tour.logo)}" alt="" class="w-full h-full object-cover rounded-2xl" />`
     : "";
 
   return `
-    <a href="tour.html?id=${encodeURIComponent(tour.tourId)}" class="garden-card garden-card--soft p-5 block hover:shadow-md transition-shadow">
-      <div class="w-full h-24 rounded-2xl garden-logo-fallback mb-4 flex items-center justify-center overflow-hidden">
-        ${logoInner || `<span class="font-display text-[var(--sage)] text-sm">${escapeHtml(tour.shortName || tour.tourName)}</span>`}
+    <a href="tour.html?id=${encodeURIComponent(tour.tourId)}" class="garden-card ${cardClass} p-5 block hover:shadow-md transition-shadow">
+      <div class="w-full h-24 rounded-2xl ${logoClass} mb-4 flex items-center justify-center overflow-hidden">
+        ${logoInner || `<span class="font-display ${logoTextClass} text-sm">${escapeHtml(tour.shortName || tour.tourName)}</span>`}
       </div>
       <h3 class="font-display text-base leading-relaxed mb-2">${escapeHtml(tour.tourName).replace(/\n/g, "<br>")}</h3>
       <div class="flex items-center gap-2 text-xs text-[var(--muted)] mb-3">
@@ -28,7 +34,7 @@ function renderTourCard(tour) {
         <span>・</span>
         <span>${rangeLabel}</span>
       </div>
-      <span class="pill">${tour.tourType === "event" ? "EVENT" : "TOUR"}</span>
+      <span class="${pillClass}">${isEvent ? "EVENT" : "TOUR"}</span>
     </a>
   `;
 }

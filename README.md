@@ -40,6 +40,9 @@ scripts/generate-manifest.js … data/lives/ 配下を再帰的に走査してma
   ツアーオブジェクトに引き継ぐ。index.htmlはこれを見て「ツアー一覧」と「記念イベント一覧」を別セクションに
   分けて表示し、カードのバッジも「TOUR」/「EVENT」で出し分ける（`js/index.js`の`renderTourCard`/`renderTourList`）。
   イベントが1件も無い場合はイベント一覧セクション自体を非表示にする。
+  カードの配色もツアー（緑〜紫のグラデーション、`.garden-logo-fallback`/`.garden-card--soft`/`.pill`）と
+  イベント（暖色系のグラデーション、`.garden-logo-fallback--event`/`.garden-card--event`/`.pill--event`）で
+  分けており、`css/style.css`で定義している。
 
 `data/manifest.json` はツアー・会場の一覧だけを持つ軽量なファイルで、index.html はこれだけを読み込む。
 各会場のセットリスト本体は `data/lives/{tourId}/{venueId}.json` に分離してあり、tour.html → player.html と
