@@ -43,7 +43,7 @@
         {
           "venueId": "nagasaki",
           "liveId": "2025_acoustic_vol2_nagasaki",
-          "place": "長崎公演",
+          "place": "長崎 DRUM Be-7",
           "prefecture": "長崎県",
           "date": "20250222",
           "setlistStatus": "fan-sourced"
@@ -51,7 +51,7 @@
         {
           "venueId": "saga",
           "liveId": "2025_acoustic_vol2_saga",
-          "place": "佐賀公演",
+          "place": "佐賀 GEILS",
           "prefecture": "佐賀県",
           "date": "20250223",
           "setlistStatus": "fan-sourced"
@@ -59,7 +59,7 @@
         {
           "venueId": "gunma",
           "liveId": "2025_acoustic_vol2_gunma",
-          "place": "群馬公演",
+          "place": "前橋 DYVER",
           "prefecture": "群馬県",
           "date": "20250301",
           "setlistStatus": "fan-sourced"
@@ -67,7 +67,7 @@
         {
           "venueId": "ibaraki",
           "liveId": "2025_acoustic_vol2_ibaraki",
-          "place": "茨城公演",
+          "place": "水戸 LIGHT HOUSE",
           "prefecture": "茨城県",
           "date": "20250302",
           "setlistStatus": "fan-sourced"
@@ -75,7 +75,7 @@
         {
           "venueId": "nara",
           "liveId": "2025_acoustic_vol2_nara",
-          "place": "奈良公演",
+          "place": "奈良 EVANS CASTLE HALL",
           "prefecture": "奈良県",
           "date": "20250315",
           "setlistStatus": "fan-sourced"
@@ -83,7 +83,7 @@
         {
           "venueId": "mie",
           "liveId": "2025_acoustic_vol2_mie",
-          "place": "三重公演",
+          "place": "四日市 CLUB ROOTS",
           "prefecture": "三重県",
           "date": "20250316",
           "setlistStatus": "fan-sourced"
@@ -91,7 +91,7 @@
         {
           "venueId": "toyama",
           "liveId": "2025_acoustic_vol2_toyama",
-          "place": "富山公演",
+          "place": "富山 MAIRO",
           "prefecture": "富山県",
           "date": "20250412",
           "setlistStatus": "fan-sourced"
@@ -99,7 +99,7 @@
         {
           "venueId": "fukui",
           "liveId": "2025_acoustic_vol2_fukui",
-          "place": "福井公演",
+          "place": "福井 CHOP",
           "prefecture": "福井県",
           "date": "20250413",
           "setlistStatus": "fan-sourced"
@@ -107,7 +107,7 @@
         {
           "venueId": "yamanashi",
           "liveId": "2025_acoustic_vol2_yamanashi",
-          "place": "山梨公演",
+          "place": "甲府 KAZOO HALL",
           "prefecture": "山梨県",
           "date": "20250419",
           "setlistStatus": "fan-sourced"
@@ -115,7 +115,7 @@
         {
           "venueId": "nagano",
           "liveId": "2025_acoustic_vol2_nagano",
-          "place": "長野公演",
+          "place": "長野 CLUB JUNK BOX",
           "prefecture": "長野県",
           "date": "20250420",
           "setlistStatus": "fan-sourced"
@@ -123,7 +123,7 @@
         {
           "venueId": "aomori",
           "liveId": "2025_acoustic_vol2_aomori",
-          "place": "青森公演",
+          "place": "青森 Quarter",
           "prefecture": "青森県",
           "date": "20250503",
           "setlistStatus": "fan-sourced"
@@ -131,7 +131,7 @@
         {
           "venueId": "hokkaido",
           "liveId": "2025_acoustic_vol2_hokkaido",
-          "place": "北海道公演",
+          "place": "札幌 PENNYLANE24",
           "prefecture": "北海道",
           "date": "20250505",
           "setlistStatus": "fan-sourced"
@@ -139,7 +139,7 @@
         {
           "venueId": "ehime",
           "liveId": "2025_acoustic_vol2_ehime",
-          "place": "愛媛公演",
+          "place": "松山 WstudioRED",
           "prefecture": "愛媛県",
           "date": "20250517",
           "setlistStatus": "fan-sourced"
@@ -147,7 +147,7 @@
         {
           "venueId": "tokushima",
           "liveId": "2025_acoustic_vol2_tokushima",
-          "place": "徳島公演",
+          "place": "徳島 club GRINDHOUSE",
           "prefecture": "徳島県",
           "date": "20250518",
           "setlistStatus": "fan-sourced"
