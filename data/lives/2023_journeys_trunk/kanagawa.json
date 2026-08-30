@@ -1,0 +1,98 @@
+{
+  "liveId": "2023_journeys_trunk_kanagawa",
+  "tourId": "2023_journeys_trunk",
+  "tourName": "南條愛乃 Live Tour 2023 ～ジャーニーズ・トランク～ supported by animelo",
+  "venueId": "kanagawa",
+  "venueName": "相模女子大学グリーンホール 大ホール",
+  "prefecture": "神奈川県",
+  "date": "20230423",
+  "setlistStatus": "fan-sourced",
+  "setlistSource": "LiveFans（ファンによる参戦記録の投稿サイト）の各公演ページを参考にしたセットリストです。MCブレイクは曲ではないため一覧には含めていません。神奈川・大阪の2公演と、愛知・東京の2公演とで曲順の並びが異なっていました（前半の曲順が入れ替わっている）。誤りがあれば修正してください。",
+  "tracks": [
+    {
+      "title": "Lonely voyage",
+      "id": "4yBEjngp9lw"
+    },
+    {
+      "title": "飛ぶサカナ",
+      "id": "f18ROjUSUM8"
+    },
+    {
+      "title": "涙流るるまま",
+      "id": "xGmFccGNsLM"
+    },
+    {
+      "title": "あなたの愛した世界",
+      "id": "xs63T0N36Wo"
+    },
+    {
+      "title": "君が笑む夕暮れ",
+      "id": "JnhOi4lwOGY"
+    },
+    {
+      "title": "最初の10歩",
+      "id": "zrW-nU1PTAA"
+    },
+    {
+      "title": "光",
+      "id": "jtzwus2nZ_A"
+    },
+    {
+      "title": "ヒトリとキミと",
+      "id": "4nKtq0bWXH8"
+    },
+    {
+      "title": "スキップトラベル（バンドインスト）",
+      "id": null,
+      "note": "バンドによるインストゥルメンタル演奏（南條愛乃の歌唱なし）のため、対応する公式動画は見つかっていません"
+    },
+    {
+      "title": "静夜行",
+      "id": "6LRH5yJlubA"
+    },
+    {
+      "title": "IRO",
+      "id": "K2Y6YHOjN60"
+    },
+    {
+      "title": "この胸に名もなき星",
+      "id": "RdgwvWnkeus"
+    },
+    {
+      "title": "an-tiit",
+      "id": "t9ckdN3Xrv4"
+    },
+    {
+      "title": "繋がりの歌",
+      "id": "_Qbzpc_z_g8"
+    },
+    {
+      "title": "雨音と潮騒",
+      "id": "gPSb5pS0Ado"
+    },
+    {
+      "title": "シンプル",
+      "id": "NSBQpxgTl-M"
+    },
+    {
+      "title": "EVOLUTiON：",
+      "id": "hmx11lehXsI"
+    },
+    {
+      "title": "ハートリップ",
+      "id": "CUDl0nW4hZ4"
+    },
+    {
+      "title": "ヨルゴト",
+      "id": "7V2yUwNYBUE"
+    },
+    {
+      "title": "・R・i・n・g・",
+      "id": "He_o-erua4Y"
+    },
+    {
+      "title": "ジャーニーズ・トランク",
+      "id": "a9jWxsScUDc"
+    }
+  ]
+}
