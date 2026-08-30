@@ -125,6 +125,18 @@ window.onYouTubeIframeAPIReady = function () {
         if (pendingPlayIndex !== null) {
           playVideoAtIndex(pendingPlayIndex);
           pendingPlayIndex = null;
+        } else if (playQueue.length > 0) {
+          // まだ何も選ばれていない状態だと、プレイヤー中央のYouTubeマークを
+          // 押しても再生できる動画が無くエラーになってしまうため、
+          // ページを開いた時点で1曲目をあらかじめセットしておく
+          // （cueVideoByIdなので自動再生はされず、サムネイルと
+          // 再生ボタンが表示されるだけの状態になる）。
+          // queuePosもここで確定させておくことで、ユーザーがYouTube側の
+          // 再生ボタンを直接押して再生を始めた場合でも、曲が終わったときに
+          // 正しく次の曲へ進む（0曲目を再ループしない）ようにする。
+          queuePos = 0;
+          highlightPlaying(playQueue[0]);
+          ytPlayer.cueVideoById(tracks[playQueue[0]].id);
         }
       },
       onStateChange: (e) => {
