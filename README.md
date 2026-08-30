@@ -56,16 +56,40 @@ node scripts/generate-manifest.js
 
 ## セットアップ
 
-1. Supabaseプロジェクトを作成し、SQLエディタで `sql/schema.sql` を実行する。
-2. `js/supabase-config.js` に Project URL と **Publishable key**（旧anon key相当）を入力する。クライアントに埋め込んでOK。
+1. Supabaseは新規プロジェクトを作らず、**下川みくにセトリサイトと同じSupabaseプロジェクトに相乗りする**
+   （Supabase無料枠は1アカウントにつきプロジェクト2件までのため。詳細は下記「Supabaseプロジェクトの相乗りについて」参照）。
+   そのプロジェクトのSQLエディタで `sql/schema.sql` を実行する。
+2. `js/supabase-config.js` に、その（下川みくにサイトと共通の）Project URL と
+   **Publishable key**（旧anon key相当）を入力する。クライアントに埋め込んでOK。
 3. Googleログインを設定する（下記「Googleログインの設定」参照）。
-4. Netlifyにリポジトリを接続してデプロイする。
+4. Vercelにリポジトリを接続してデプロイする。
+
+## Supabaseプロジェクトの相乗りについて
+
+南條愛乃サイトは、下川みくにセトリサイトと**同じSupabaseプロジェクト**を共有している。
+そのため `sql/schema.sql` のテーブル名は全て `nanjo_` プレフィックス付き
+（`nanjo_favorites` / `nanjo_attended` / `nanjo_mysetlists` / `nanjo_mysetlist_tracks`）にしてあり、
+下川みくにサイト側のテーブル（プレフィックス無し）とは絶対に重複しないようにしてある。
+JS側（`js/common.js` 以外の各ページのJS）も全てこの `nanjo_` 付きテーブル名を参照するように揃えてある。
+
+- 認証（Supabase Auth）そのものも共有するが、これは実害がない。ログイン情報（ユーザーアカウント）は
+  共有されるだけで、お気に入り・参加記録・マイセトリなどのデータはテーブルが別なので混ざらない。
+- Authentication > URL Configuration の Redirect URLs には、下川みくにサイトのURLに**追加する形で**
+  南條愛乃サイトのURL（Vercelの本番URL）を登録する。既存のURLを削除しないこと。
+- 今後 `sql/schema.sql` を再実行・修正する際は、テーブル名が必ず `nanjo_` で始まっていることを
+  確認してから実行すること（`DROP TABLE IF EXISTS` があるため、万が一プレフィックス無しの名前で
+  実行すると下川みくにサイトの本物のデータが消えてしまう）。
 
 ## Googleログインの設定
 
 下川みくに版はメールのマジックリンクだったが、南條愛乃版は想定ファン数がかなり多く、
 Supabase組み込みメール送信のレート制限やカスタムSMTPの準備が間に合わない可能性が高いため、
 **メール送信が発生しないGoogle OAuthログイン**に変更している。
+
+なお下川みくにサイトはメールのマジックリンクのままでよく、Google認証を有効化しても
+下川みくにサイト側の既存のログイン方法（メール）には影響しない（Authプロバイダーの追加は
+既存のプロバイダーを無効化するものではない）。共有プロジェクトで既にGoogleプロバイダーが
+設定済みなら、手順1・2（Google Cloud Console側の作業）は不要で、手順4（Redirect URLsへの追加）だけでよい。
 
 1. [Google Cloud Console](https://console.cloud.google.com/) でプロジェクトを作成し、
    「APIとサービス」→「OAuth同意画面」を設定する（外部/公開、スコープは `email`・`profile`・`openid` のみでOK。
@@ -76,7 +100,7 @@ Supabase組み込みメール送信のレート制限やカスタムSMTPの準�
 3. 発行された クライアントID / クライアントシークレット を、Supabaseダッシュボードの
    Authentication > Providers > Google に入力して有効化する。
 4. Authentication > URL Configuration の Site URL / Redirect URLs に、
-   Netlifyの本番URL（例: `https://xxxx.netlify.app`）を追加する
+   Vercelの本番URL（例: `https://xxxx.vercel.app`）を追加する
    （ここに登録されていないURLへはOAuthログイン後にリダイレクトされない）。
 
 表示名は、ログイン直後はGoogleアカウントの名前が自動で使われ、マイページから好きな表示名に変更できる
@@ -87,7 +111,7 @@ Supabase組み込みメール送信のレート制限やカスタムSMTPの準�
 - **RLSだけでは`permission denied`になる**: `sql/schema.sql` は各テーブルについて
   `DROP TABLE` → `CREATE TABLE` → `ENABLE ROW LEVEL SECURITY` → `CREATE POLICY` →
   `GRANT ... TO authenticated` → `NOTIFY pgrst, 'reload schema'` の順で書いてある。
-- **Netlifyの Pretty URLs**: デプロイ後に内部リンクの`.html`が消えることがあるため、
+- **Vercelの Clean URLs**: デプロイ後に内部リンクの`.html`が消えることがあるため、
   JSでリンクをセレクタ検索する場合は `href*="player.html?id="` のような拡張子依存の書き方をしない
   （このサイトはリンクをJSで動的に生成しているので基本的に影響は受けないが、今後手を入れる際は注意）。
 - **onAuthStateChangeの二重初期化**: `js/common.js` の `onAuthReady` / `initAuthWatcher` は、

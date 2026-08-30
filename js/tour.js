@@ -25,7 +25,7 @@ async function fetchAttended(liveIds) {
   if (!currentUser) return new Set();
   const supabase = getSupabase();
   const { data, error } = await supabase
-    .from("attended")
+    .from("nanjo_attended")
     .select("live_id")
     .in("live_id", liveIds);
   if (error) {
@@ -45,7 +45,7 @@ async function toggleAttended(liveId, btn) {
 
   if (isAttended) {
     const { error } = await supabase
-      .from("attended")
+      .from("nanjo_attended")
       .delete()
       .eq("user_id", currentUser.id)
       .eq("live_id", liveId);
@@ -56,7 +56,7 @@ async function toggleAttended(liveId, btn) {
     }
   } else {
     const { error } = await supabase
-      .from("attended")
+      .from("nanjo_attended")
       .insert({ user_id: currentUser.id, live_id: liveId });
     if (!error) {
       attendedSet.add(liveId);

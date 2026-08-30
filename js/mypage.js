@@ -9,7 +9,7 @@ let currentUser = null;
 async function loadAttended() {
   const supabase = getSupabase();
   const [{ data: rows }, manifest] = await Promise.all([
-    supabase.from("attended").select("live_id, created_at").order("created_at", { ascending: false }),
+    supabase.from("nanjo_attended").select("live_id, created_at").order("created_at", { ascending: false }),
     loadManifest(),
   ]);
 
@@ -40,7 +40,7 @@ async function loadAttended() {
 async function loadFavorites() {
   const supabase = getSupabase();
   const { data: rows } = await supabase
-    .from("favorites")
+    .from("nanjo_favorites")
     .select("video_id, title, created_at")
     .order("created_at", { ascending: false });
 
@@ -64,7 +64,7 @@ async function loadFavorites() {
   el.querySelectorAll(".heart-btn").forEach((btn) => {
     btn.addEventListener("click", async () => {
       await supabase
-        .from("favorites")
+        .from("nanjo_favorites")
         .delete()
         .eq("user_id", currentUser.id)
         .eq("video_id", btn.dataset.videoId);

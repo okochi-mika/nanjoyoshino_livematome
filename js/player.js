@@ -41,12 +41,12 @@ async function loadPlaylist() {
   if (mysetlistId) {
     const supabase = getSupabase();
     const { data: setlist } = await supabase
-      .from("mysetlists")
+      .from("nanjo_mysetlists")
       .select("id, name")
       .eq("id", mysetlistId)
       .single();
     const { data: rows } = await supabase
-      .from("mysetlist_tracks")
+      .from("nanjo_mysetlist_tracks")
       .select("title, video_id, position")
       .eq("mysetlist_id", mysetlistId)
       .order("position", { ascending: true });
@@ -69,7 +69,7 @@ async function loadPlaylist() {
 async function fetchFavorites() {
   if (!currentUser) return new Set();
   const supabase = getSupabase();
-  const { data, error } = await supabase.from("favorites").select("video_id");
+  const { data, error } = await supabase.from("nanjo_favorites").select("video_id");
   if (error) {
     console.error(error);
     return new Set();
@@ -87,7 +87,7 @@ async function toggleFavorite(videoId, title, btn) {
 
   if (isFav) {
     const { error } = await supabase
-      .from("favorites")
+      .from("nanjo_favorites")
       .delete()
       .eq("user_id", currentUser.id)
       .eq("video_id", videoId);
@@ -98,7 +98,7 @@ async function toggleFavorite(videoId, title, btn) {
     }
   } else {
     const { error } = await supabase
-      .from("favorites")
+      .from("nanjo_favorites")
       .insert({ user_id: currentUser.id, video_id: videoId, title });
     if (!error) {
       favoriteVideoIds.add(videoId);

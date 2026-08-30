@@ -9,7 +9,7 @@ let currentUser = null;
 async function fetchSetlists() {
   const supabase = getSupabase();
   const { data } = await supabase
-    .from("mysetlists")
+    .from("nanjo_mysetlists")
     .select("id, name, created_at")
     .order("created_at", { ascending: true });
   return data || [];
@@ -18,7 +18,7 @@ async function fetchSetlists() {
 async function fetchTracks(mysetlistId) {
   const supabase = getSupabase();
   const { data } = await supabase
-    .from("mysetlist_tracks")
+    .from("nanjo_mysetlist_tracks")
     .select("id, title, video_id, position")
     .eq("mysetlist_id", mysetlistId)
     .order("position", { ascending: true });
@@ -28,7 +28,7 @@ async function fetchTracks(mysetlistId) {
 async function renumber(mysetlistId, tracks) {
   const supabase = getSupabase();
   const updates = tracks.map((t, i) =>
-    supabase.from("mysetlist_tracks").update({ position: i }).eq("id", t.id)
+    supabase.from("nanjo_mysetlist_tracks").update({ position: i }).eq("id", t.id)
   );
   await Promise.all(updates);
 }
@@ -94,7 +94,7 @@ async function wireSetlistCard(card, setlistId) {
     editorEl.querySelectorAll(".remove-track-btn").forEach((btn) => {
       btn.addEventListener("click", async () => {
         const trackId = btn.closest(".track-row").dataset.trackId;
-        await supabase.from("mysetlist_tracks").delete().eq("id", trackId);
+        await supabase.from("nanjo_mysetlist_tracks").delete().eq("id", trackId);
         const remaining = await fetchTracks(setlistId);
         await renumber(setlistId, remaining);
         refreshTracks();
@@ -125,14 +125,14 @@ async function wireSetlistCard(card, setlistId) {
   await refreshTracks();
 
   card.querySelector(".delete-setlist-btn").addEventListener("click", async () => {
-    await supabase.from("mysetlists").delete().eq("id", setlistId);
+    await supabase.from("nanjo_mysetlists").delete().eq("id", setlistId);
     renderSetlists();
   });
 
   const nameInput = card.querySelector(".setlist-name-input");
   nameInput.addEventListener("change", async () => {
     await supabase
-      .from("mysetlists")
+      .from("nanjo_mysetlists")
       .update({ name: nameInput.value.trim() })
       .eq("id", setlistId);
   });
@@ -142,7 +142,7 @@ async function wireSetlistCard(card, setlistId) {
     const titleInput = card.querySelector(".track-title-input");
     const videoInput = card.querySelector(".track-video-input");
     const tracks = await fetchTracks(setlistId);
-    await supabase.from("mysetlist_tracks").insert({
+    await supabase.from("nanjo_mysetlist_tracks").insert({
       mysetlist_id: setlistId,
       user_id: currentUser.id,
       title: titleInput.value.trim(),
@@ -159,7 +159,7 @@ document.getElementById("create-form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const supabase = getSupabase();
   const input = document.getElementById("new-setlist-name");
-  await supabase.from("mysetlists").insert({
+  await supabase.from("nanjo_mysetlists").insert({
     user_id: currentUser.id,
     name: input.value.trim(),
   });
