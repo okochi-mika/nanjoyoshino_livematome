@@ -42,7 +42,7 @@ async function renderTourList() {
           <div class="w-full h-24 rounded-2xl garden-logo-fallback mb-4 flex items-center justify-center overflow-hidden">
             ${logoInner || `<span class="font-display text-[var(--sage)] text-sm">${escapeHtml(tour.shortName || tour.tourName)}</span>`}
           </div>
-          <h3 class="font-display text-base leading-relaxed mb-2">${escapeHtml(tour.tourName)}</h3>
+          <h3 class="font-display text-base leading-relaxed mb-2">${escapeHtml(tour.tourName).replace(/\n/g, "<br>")}</h3>
           <div class="flex items-center gap-2 text-xs text-[var(--muted)] mb-3">
             <span>${tour.year || ""}</span>
             <span>・</span>
