@@ -1,0 +1,81 @@
+{
+  "liveId": "2019_acoustic_vol1_okayama",
+  "tourId": "2019_acoustic_vol1",
+  "tourName": "南條愛乃 Acoustic Live Tour Vol.１ 17/47\n～わたしから会いにいきます！～",
+  "venueId": "okayama",
+  "venueName": "CRAZYMAMA KINGDOM",
+  "prefecture": "岡山県",
+  "date": "20190630",
+  "setlistStatus": "fan-sourced",
+  "setlistSource": "ファンによる参戦記録の投稿サイト「LiveFans」の各公演ページを参考にしたセットリストです。公式発表ではありません。MCブレイクは曲ではないため一覧には含めていません。誤りがあれば修正してください。",
+  "tracks": [
+    {
+      "title": "君のとなり わたしの場所",
+      "id": "gH82va5Sb6o"
+    },
+    {
+      "title": "Recording.",
+      "id": "-sTOgxRFWfk"
+    },
+    {
+      "title": "君が笑む夕暮れ",
+      "id": "JnhOi4lwOGY"
+    },
+    {
+      "title": "優しくつもる言葉の花",
+      "id": "ASbh0B9HybU"
+    },
+    {
+      "title": "ゼロイチキセキ",
+      "id": "y9xv4o1i6nc"
+    },
+    {
+      "title": "スキップトラベル",
+      "id": "2GVkgZJQQQM"
+    },
+    {
+      "title": "光のはじまり",
+      "id": "8Y5YIZJ3u74"
+    },
+    {
+      "title": "そらほしひとつ",
+      "id": "rIWBUOGzE-c"
+    },
+    {
+      "title": "今日もいい天気だよ",
+      "id": "6yCy2Bqq9yw"
+    },
+    {
+      "title": "believe in myself",
+      "id": "5vEhaIrCSAo"
+    },
+    {
+      "title": "灰色ノ街へ告グ",
+      "id": "ofS-_RX2Ujc"
+    },
+    {
+      "title": "OTO",
+      "id": "wfNicg6HWbw"
+    },
+    {
+      "title": "ピンクの曲(仮)",
+      "id": null
+    },
+    {
+      "title": "サヨナラの惑星",
+      "id": "VBtP4VR32-Q"
+    },
+    {
+      "title": "THE MEMORIES APARTMENT",
+      "id": "ZOhKk8m5DiQ"
+    },
+    {
+      "title": "わガまま♡ブれいん",
+      "id": "sIHqxHKNs-w"
+    },
+    {
+      "title": "・R・i・n・g・",
+      "id": "He_o-erua4Y"
+    }
+  ]
+}

@@ -1,6 +1,151 @@
 {
   "tours": [
     {
+      "tourId": "2019_acoustic_vol1",
+      "tourName": "南條愛乃 Acoustic Live Tour Vol.１ 17/47\n～わたしから会いにいきます！～",
+      "shortName": "南條愛乃 Acoustic Live Tour Vol.１ 17/47 ～わたしから会いにいきます！～",
+      "year": 2019,
+      "logo": null,
+      "venues": [
+        {
+          "venueId": "fukuoka",
+          "liveId": "2019_acoustic_vol1_fukuoka",
+          "place": "DRUM LOGOS",
+          "prefecture": "福岡県",
+          "date": "20190504",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "kumamoto",
+          "liveId": "2019_acoustic_vol1_kumamoto",
+          "place": "B.9 V1",
+          "prefecture": "熊本県",
+          "date": "20190505",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "kyoto",
+          "liveId": "2019_acoustic_vol1_kyoto",
+          "place": "FANJ",
+          "prefecture": "京都府",
+          "date": "20190511",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "kanazawa",
+          "liveId": "2019_acoustic_vol1_kanazawa",
+          "place": "AZ",
+          "prefecture": "石川県",
+          "date": "20190512",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "koriyama",
+          "liveId": "2019_acoustic_vol1_koriyama",
+          "place": "Hip Shot Japan",
+          "prefecture": "福島県",
+          "date": "20190518",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "kumagaya",
+          "liveId": "2019_acoustic_vol1_kumagaya",
+          "place": "HEAVEN'S ROCK 熊谷 VJ-1",
+          "prefecture": "埼玉県",
+          "date": "20190519",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "kochi",
+          "liveId": "2019_acoustic_vol1_kochi",
+          "place": "X-pt.",
+          "prefecture": "高知県",
+          "date": "20190525",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "takamatsu",
+          "liveId": "2019_acoustic_vol1_takamatsu",
+          "place": "Olive Hall",
+          "prefecture": "香川県",
+          "date": "20190526",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "aichi",
+          "liveId": "2019_acoustic_vol1_aichi",
+          "place": "Electric Lady Land",
+          "prefecture": "愛知県",
+          "date": "20190531",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "gifu",
+          "liveId": "2019_acoustic_vol1_gifu",
+          "place": "EVENTHALL club-G",
+          "prefecture": "岐阜県",
+          "date": "20190608",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "shizuoka",
+          "liveId": "2019_acoustic_vol1_shizuoka",
+          "place": "LIVE ROXY SHIZUOKA",
+          "prefecture": "静岡県",
+          "date": "20190609",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "wakayama",
+          "liveId": "2019_acoustic_vol1_wakayama",
+          "place": "OLDTIME",
+          "prefecture": "和歌山県",
+          "date": "20190615",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "hyogo",
+          "liveId": "2019_acoustic_vol1_hyogo",
+          "place": "Harbor Studio",
+          "prefecture": "兵庫県",
+          "date": "20190616",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "yamagata",
+          "liveId": "2019_acoustic_vol1_yamagata",
+          "place": "ミュージック昭和session",
+          "prefecture": "山形県",
+          "date": "20190622",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "tochigi",
+          "liveId": "2019_acoustic_vol1_tochigi",
+          "place": "HEAVEN'S ROCK 宇都宮 2/3(VJ-4)",
+          "prefecture": "栃木県",
+          "date": "20190623",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "tottori",
+          "liveId": "2019_acoustic_vol1_tottori",
+          "place": "AZTiC laughs",
+          "prefecture": "鳥取県",
+          "date": "20190629",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "okayama",
+          "liveId": "2019_acoustic_vol1_okayama",
+          "place": "CRAZYMAMA KINGDOM",
+          "prefecture": "岡山県",
+          "date": "20190630",
+          "setlistStatus": "fan-sourced"
+        }
+      ]
+    },
+    {
       "tourId": "2022_a_tiny_winter_story",
       "tourName": "南條愛乃 Live Tour 2022 ～A Tiny Winter Story～ supported by animelo mix",
       "shortName": "南條愛乃 Live Tour 2022 ～A Tiny Winter Story～ supported by animelo mix",

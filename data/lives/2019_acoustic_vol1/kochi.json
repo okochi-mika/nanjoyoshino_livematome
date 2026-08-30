@@ -1,0 +1,77 @@
+{
+  "liveId": "2019_acoustic_vol1_kochi",
+  "tourId": "2019_acoustic_vol1",
+  "tourName": "南條愛乃 Acoustic Live Tour Vol.１ 17/47\n～わたしから会いにいきます！～",
+  "venueId": "kochi",
+  "venueName": "X-pt.",
+  "prefecture": "高知県",
+  "date": "20190525",
+  "setlistStatus": "fan-sourced",
+  "setlistSource": "ファンによる参戦記録の投稿サイト「LiveFans」の各公演ページを参考にしたセットリストです。公式発表ではありません。MCブレイクは曲ではないため一覧には含めていません。誤りがあれば修正してください。",
+  "tracks": [
+    {
+      "title": "黄昏のスタアライト",
+      "id": "TR_WQo5btXg"
+    },
+    {
+      "title": "灰色ノ街へ告グ",
+      "id": "ofS-_RX2Ujc"
+    },
+    {
+      "title": "ゼロイチキセキ",
+      "id": "y9xv4o1i6nc"
+    },
+    {
+      "title": "優しくつもる言葉の花",
+      "id": "ASbh0B9HybU"
+    },
+    {
+      "title": "一切は物語",
+      "id": "WOg3v3PaeL0"
+    },
+    {
+      "title": "スキップトラベル",
+      "id": "2GVkgZJQQQM"
+    },
+    {
+      "title": "君のとなり わたしの場所",
+      "id": "gH82va5Sb6o"
+    },
+    {
+      "title": "そらほしひとつ",
+      "id": "rIWBUOGzE-c"
+    },
+    {
+      "title": "今日もいい天気だよ",
+      "id": "6yCy2Bqq9yw"
+    },
+    {
+      "title": "believe in myself",
+      "id": "5vEhaIrCSAo"
+    },
+    {
+      "title": "idc",
+      "id": "twsWPgPuxYg"
+    },
+    {
+      "title": "サクラタイマー",
+      "id": "I-Woo9FHhHY"
+    },
+    {
+      "title": "サヨナラの惑星",
+      "id": "VBtP4VR32-Q"
+    },
+    {
+      "title": "THE MEMORIES APARTMENT",
+      "id": "ZOhKk8m5DiQ"
+    },
+    {
+      "title": "わガまま♡ブれいん",
+      "id": "sIHqxHKNs-w"
+    },
+    {
+      "title": "・R・i・n・g・",
+      "id": "He_o-erua4Y"
+    }
+  ]
+}
