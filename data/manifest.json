@@ -228,6 +228,31 @@
       ]
     },
     {
+      "tourId": "2023_10th_anniversary",
+      "tourName": "南條愛乃 10th Anniversary Live -FUN! & Memories-",
+      "shortName": "南條愛乃 10th Anniversary Live -FUN! & Memories-",
+      "year": 2023,
+      "logo": null,
+      "venues": [
+        {
+          "venueId": "day1_fun",
+          "liveId": "2023_10th_anniversary_day1_fun",
+          "place": "富士市文化会館ロゼシアター 大ホール",
+          "prefecture": "静岡県",
+          "date": "20231223",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "day2_memories",
+          "liveId": "2023_10th_anniversary_day2_memories",
+          "place": "富士市文化会館ロゼシアター 大ホール",
+          "prefecture": "静岡県",
+          "date": "20231224",
+          "setlistStatus": "fan-sourced"
+        }
+      ]
+    },
+    {
       "tourId": "2023_journeys_trunk",
       "tourName": "南條愛乃 Live Tour 2023 ～ジャーニーズ・トランク～ supported by animelo",
       "shortName": "南條愛乃 Live Tour 2023 ～ジャーニーズ・トランク～ supported by animelo",
