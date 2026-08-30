@@ -35,6 +35,11 @@ scripts/generate-manifest.js … data/lives/ 配下を再帰的に走査してma
 - `venueId`（例: `osaka`）… ツアー内の会場ID
 - `liveId`（`{tourId}_{venueId}`、例: `2024_fantasic_garden_osaka`）… 公演単位のID。
   `player.html?id={liveId}` で該当公演のセトリを再生する。
+- `tourType`（`"tour"` または `"event"`、省略時は`"tour"`扱い）… 複数会場を回るツアーか、周年記念などの
+  単独公演イベントかを区別するフィールド。各ライブJSONに付け、`generate-manifest.js`がmanifest.jsonの
+  ツアーオブジェクトに引き継ぐ。index.htmlはこれを見て「ツアー一覧」と「記念イベント一覧」を別セクションに
+  分けて表示し、カードのバッジも「TOUR」/「EVENT」で出し分ける（`js/index.js`の`renderTourCard`/`renderTourList`）。
+  イベントが1件も無い場合はイベント一覧セクション自体を非表示にする。
 
 `data/manifest.json` はツアー・会場の一覧だけを持つ軽量なファイルで、index.html はこれだけを読み込む。
 各会場のセットリスト本体は `data/lives/{tourId}/{venueId}.json` に分離してあり、tour.html → player.html と
