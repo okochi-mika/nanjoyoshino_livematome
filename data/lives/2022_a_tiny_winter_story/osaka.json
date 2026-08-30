@@ -1,0 +1,85 @@
+{
+  "liveId": "2022_a_tiny_winter_story_osaka",
+  "tourId": "2022_a_tiny_winter_story",
+  "tourName": "南條愛乃 Live Tour 2022 ～A Tiny Winter Story～ supported by animelo mix",
+  "venueId": "osaka",
+  "venueName": "NHK大阪ホール",
+  "prefecture": "大阪府",
+  "date": "20220918",
+  "setlistStatus": "fan-sourced",
+  "setlistSource": "LiveFans（ファンによる参戦記録の投稿サイト）の各公演ページを参考にしたセットリストです。MCブレイクおよび楽曲の合間の「朗読」パートは曲ではないため一覧には含めていません。3公演で曲順の並びが異なっていました（前半の曲順が入れ替わっている）。誤りがあれば修正してください。",
+  "tracks": [
+    {
+      "title": "全ては不確かな世界",
+      "id": "bN0aSs9U_Tc"
+    },
+    {
+      "title": "物語よ始まれと願う空に",
+      "id": "IAva1iOe54c"
+    },
+    {
+      "title": "光のはじまり",
+      "id": "8Y5YIZJ3u74"
+    },
+    {
+      "title": "ゼロイチキセキ",
+      "id": "y9xv4o1i6nc"
+    },
+    {
+      "title": "ヒトリとキミと",
+      "id": "4nKtq0bWXH8"
+    },
+    {
+      "title": "Merry",
+      "id": "azuifHKNlMs"
+    },
+    {
+      "title": "青星",
+      "id": "lRGvO1aCzs4"
+    },
+    {
+      "title": "My Heart My Hope",
+      "id": "a4LKZ1hMRBo"
+    },
+    {
+      "title": "vignette",
+      "id": "RIP72MfuATI"
+    },
+    {
+      "title": "シュガーポット",
+      "id": "03KkVLQQDV4"
+    },
+    {
+      "title": "ありったけの愛しさで",
+      "id": "Qyg9ibOFNn8"
+    },
+    {
+      "title": "余韻",
+      "id": "NBDRlkg_tnk"
+    },
+    {
+      "title": "A Tiny Winter Story",
+      "id": "PEEfOOW1goI"
+    },
+    {
+      "title": "白い季節の約束",
+      "id": "iXQYMGjAh8o"
+    },
+    {
+      "title": "君が笑む夕暮れ",
+      "id": "JnhOi4lwOGY"
+    },
+    {
+      "title": "EVOLUTiON：",
+      "id": "hmx11lehXsI"
+    },
+    {
+      "title": "新世界",
+      "id": "zFiqUc6Y0Ro"
+    },
+    {
+      "title": "・R・i・n・g・",
+      "id": "He_o-erua4Y"
+    }
+  ]
+}

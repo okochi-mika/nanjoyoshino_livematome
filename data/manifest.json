@@ -1,6 +1,39 @@
 {
   "tours": [
     {
+      "tourId": "2022_a_tiny_winter_story",
+      "tourName": "南條愛乃 Live Tour 2022 ～A Tiny Winter Story～ supported by animelo mix",
+      "shortName": "南條愛乃 Live Tour 2022 ～A Tiny Winter Story～ supported by animelo mix",
+      "year": 2022,
+      "logo": null,
+      "venues": [
+        {
+          "venueId": "osaka",
+          "liveId": "2022_a_tiny_winter_story_osaka",
+          "place": "NHK大阪ホール",
+          "prefecture": "大阪府",
+          "date": "20220918",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "aichi",
+          "liveId": "2022_a_tiny_winter_story_aichi",
+          "place": "日本特殊陶業市民会館 ビレッジホール",
+          "prefecture": "愛知県",
+          "date": "20221001",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "saitama",
+          "liveId": "2022_a_tiny_winter_story_saitama",
+          "place": "さいたま市文化センター",
+          "prefecture": "埼玉県",
+          "date": "20221016",
+          "setlistStatus": "fan-sourced"
+        }
+      ]
+    },
+    {
       "tourId": "2023_journeys_trunk",
       "tourName": "南條愛乃 Live Tour 2023 ～ジャーニーズ・トランク～ supported by animelo",
       "shortName": "南條愛乃 Live Tour 2023 ～ジャーニーズ・トランク～ supported by animelo",
