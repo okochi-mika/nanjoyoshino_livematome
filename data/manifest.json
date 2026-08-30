@@ -6,6 +6,7 @@
       "shortName": "南條愛乃 Live Tour 2018 -THE MEMORIES APARTMENT- supported by dアニメストア",
       "year": 2018,
       "logo": null,
+      "tourType": "tour",
       "venues": [
         {
           "venueId": "chiba_day1",
@@ -55,6 +56,7 @@
       "shortName": "南條愛乃 Acoustic Live Tour Vol.１ 17/47 ～わたしから会いにいきます！～",
       "year": 2019,
       "logo": null,
+      "tourType": "tour",
       "venues": [
         {
           "venueId": "fukuoka",
@@ -200,6 +202,7 @@
       "shortName": "南條愛乃 Live Tour 2022 ～A Tiny Winter Story～ supported by animelo mix",
       "year": 2022,
       "logo": null,
+      "tourType": "tour",
       "venues": [
         {
           "venueId": "osaka",
@@ -233,6 +236,7 @@
       "shortName": "南條愛乃 10th Anniversary Live -FUN! & Memories-",
       "year": 2023,
       "logo": null,
+      "tourType": "event",
       "venues": [
         {
           "venueId": "day1_fun",
@@ -258,6 +262,7 @@
       "shortName": "南條愛乃 Live Tour 2023 ～ジャーニーズ・トランク～ supported by animelo",
       "year": 2023,
       "logo": null,
+      "tourType": "tour",
       "venues": [
         {
           "venueId": "kanagawa",
@@ -299,6 +304,7 @@
       "shortName": "南條愛乃 Live Tour 2024 ～LIVE of The Fantasic Garden～ supported by animelo",
       "year": 2024,
       "logo": null,
+      "tourType": "tour",
       "venues": [
         {
           "venueId": "nagoya",
@@ -332,6 +338,7 @@
       "shortName": "南條愛乃 Acoustic Live Tour Vol.２ 14/47 ～わたしから会いにいきます！～",
       "year": 2025,
       "logo": null,
+      "tourType": "tour",
       "venues": [
         {
           "venueId": "nagasaki",

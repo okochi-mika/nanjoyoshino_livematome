@@ -67,7 +67,7 @@ function main() {
       continue;
     }
 
-    const { tourId, tourName, venueId, venueName, prefecture, date, liveId, setlistStatus } = live;
+    const { tourId, tourName, tourType, venueId, venueName, prefecture, date, liveId, setlistStatus } = live;
     if (!tourId || !liveId || !date) {
       console.error(`スキップ: ${file} に tourId/liveId/date のいずれかがありません`);
       continue;
@@ -81,6 +81,7 @@ function main() {
         shortName: prev.shortName || tourName || tourId,
         year: prev.year || parseInt(date.slice(0, 4), 10),
         logo: prev.logo ?? null,
+        tourType: tourType || prev.tourType || "tour",
         venues: [],
       });
     }

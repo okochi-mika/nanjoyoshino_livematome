@@ -178,9 +178,12 @@ player.html上でも曲名の横にバッジ表示されます。非公式アッ
 
 ### 「南條愛乃 10th Anniversary Live -FUN! & Memories-」について
 
-2Days公演（DAY1：FUN! 2023/12/23・DAY2：Memories 2023/12/24、いずれも富士市文化会館ロゼシアター 大ホール）を
-`data/lives/2023_10th_anniversary/` に入れています。ソロデビュー10周年を記念した公演で、DAY1はライブでの
-定番曲中心、DAY2はfripSideやアコースティックアルバムなど、これまでのキャリアを振り返る選曲でした。
+他のツアーと違い、複数会場を回るツアーではなく、1会場・2Days（DAY1：FUN! 2023/12/23・DAY2：Memories 2023/12/24、
+いずれも富士市文化会館ロゼシアター 大ホール）のソロデビュー10周年記念単独イベントです。
+`data/lives/2023_10th_anniversary/` に入れており、他のツアーと区別するため各ライブJSONに`"tourType": "event"`を
+付けています（`scripts/generate-manifest.js`がこれをmanifest.jsonに引き継ぎ、index.htmlのカードは
+「TOUR」ではなく「EVENT」バッジで表示されます）。DAY1はライブでの定番曲中心、DAY2はfripSideやアコースティック
+アルバムなど、これまでのキャリアを振り返る選曲でした。
 
 - 会場・日程・曲順は、ファンによる参戦記録の投稿サイト「LiveFans」の各公演ページを参考にしたもので、
   **公式発表ではありません**。誤りがあれば該当の `data/lives/2023_10th_anniversary/*.json` を直接修正してください。

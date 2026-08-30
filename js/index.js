@@ -50,7 +50,7 @@ async function renderTourList() {
             <span>・</span>
             <span>${rangeLabel}</span>
           </div>
-          <span class="pill">TOUR</span>
+          <span class="pill">${tour.tourType === "event" ? "EVENT" : "TOUR"}</span>
         </a>
       `;
     })
