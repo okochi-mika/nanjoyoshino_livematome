@@ -1,6 +1,55 @@
 {
   "tours": [
     {
+      "tourId": "2018_the_memories_apartment",
+      "tourName": "南條愛乃 Live Tour 2018 -THE MEMORIES APARTMENT- supported by dアニメストア",
+      "shortName": "南條愛乃 Live Tour 2018 -THE MEMORIES APARTMENT- supported by dアニメストア",
+      "year": 2018,
+      "logo": null,
+      "venues": [
+        {
+          "venueId": "chiba_day1",
+          "liveId": "2018_the_memories_apartment_chiba_day1",
+          "place": "市川市文化会館 大ホール",
+          "prefecture": "千葉県",
+          "date": "20180922",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "chiba_day2",
+          "liveId": "2018_the_memories_apartment_chiba_day2",
+          "place": "市川市文化会館 大ホール",
+          "prefecture": "千葉県",
+          "date": "20180923",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "nagoya",
+          "liveId": "2018_the_memories_apartment_nagoya",
+          "place": "名古屋国際会議場 センチュリーホール",
+          "prefecture": "愛知県",
+          "date": "20180929",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "osaka",
+          "liveId": "2018_the_memories_apartment_osaka",
+          "place": "岸和田市立浪切ホール 大ホール",
+          "prefecture": "大阪府",
+          "date": "20181008",
+          "setlistStatus": "fan-sourced"
+        },
+        {
+          "venueId": "shizuoka",
+          "liveId": "2018_the_memories_apartment_shizuoka",
+          "place": "静岡市民文化会館 大ホール",
+          "prefecture": "静岡県",
+          "date": "20181014",
+          "setlistStatus": "fan-sourced"
+        }
+      ]
+    },
+    {
       "tourId": "2019_acoustic_vol1",
       "tourName": "南條愛乃 Acoustic Live Tour Vol.１ 17/47\n～わたしから会いにいきます！～",
       "shortName": "南條愛乃 Acoustic Live Tour Vol.１ 17/47 ～わたしから会いにいきます！～",
