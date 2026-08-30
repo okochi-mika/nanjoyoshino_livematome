@@ -1,18 +1,13 @@
 // ============================================================
 // player.html: セトリ再生
-// ?id=<liveId>          … 公演のセットリストを再生
-// ?mysetlist=<uuid>     … 自分のマイセトリを再生（Supabase）
+// ?id=<liveId> … 公演のセットリストを再生
 // ============================================================
-
-renderAuthNav();
 
 function getQueryParam(name) {
   return new URLSearchParams(window.location.search).get(name);
 }
 
-let currentUser = null;
 let tracks = []; // { title, id }
-let favoriteVideoIds = new Set();
 let playQueue = []; // tracks配列のインデックス列（再生可能な曲のみ）
 let queuePos = -1;
 let ytPlayer = null;
@@ -21,7 +16,6 @@ let pendingPlayIndex = null;
 
 async function loadPlaylist() {
   const liveId = getQueryParam("id");
-  const mysetlistId = getQueryParam("mysetlist");
   const headerEl = document.getElementById("playlist-header");
   const backLink = document.getElementById("back-link");
 
@@ -38,74 +32,9 @@ async function loadPlaylist() {
     return;
   }
 
-  if (mysetlistId) {
-    const supabase = getSupabase();
-    const { data: setlist } = await supabase
-      .from("nanjo_mysetlists")
-      .select("id, name")
-      .eq("id", mysetlistId)
-      .single();
-    const { data: rows } = await supabase
-      .from("nanjo_mysetlist_tracks")
-      .select("title, video_id, position")
-      .eq("mysetlist_id", mysetlistId)
-      .order("position", { ascending: true });
-
-    tracks = (rows || []).map((r) => ({ title: r.title, id: r.video_id }));
-    backLink.href = "mysetlist.html";
-    backLink.textContent = "← マイセトリ一覧に戻る";
-    headerEl.innerHTML = `
-      <h1 class="font-display text-xl mb-1">${escapeHtml(setlist?.name || "マイセトリ")}</h1>
-      <p class="text-sm text-[var(--muted)]">あなたが作成したセットリスト</p>
-    `;
-    return;
-  }
-
   headerEl.innerHTML = `<p class="text-sm text-[var(--muted)]">再生する公演が指定されていません。</p>`;
   backLink.href = "index.html";
   backLink.textContent = "← ツアー一覧に戻る";
-}
-
-async function fetchFavorites() {
-  if (!currentUser) return new Set();
-  const supabase = getSupabase();
-  const { data, error } = await supabase.from("nanjo_favorites").select("video_id");
-  if (error) {
-    console.error(error);
-    return new Set();
-  }
-  return new Set(data.map((r) => r.video_id));
-}
-
-async function toggleFavorite(videoId, title, btn) {
-  if (!currentUser) {
-    openLoginModal();
-    return;
-  }
-  const supabase = getSupabase();
-  const isFav = favoriteVideoIds.has(videoId);
-
-  if (isFav) {
-    const { error } = await supabase
-      .from("nanjo_favorites")
-      .delete()
-      .eq("user_id", currentUser.id)
-      .eq("video_id", videoId);
-    if (!error) {
-      favoriteVideoIds.delete(videoId);
-      btn.classList.remove("is-active");
-      btn.textContent = "♡";
-    }
-  } else {
-    const { error } = await supabase
-      .from("nanjo_favorites")
-      .insert({ user_id: currentUser.id, video_id: videoId, title });
-    if (!error) {
-      favoriteVideoIds.add(videoId);
-      btn.classList.add("is-active");
-      btn.textContent = "♥";
-    }
-  }
 }
 
 function renderTrackList() {
@@ -113,7 +42,6 @@ function renderTrackList() {
   el.innerHTML = tracks
     .map((t, i) => {
       const playable = hasVideo(t);
-      const isFav = playable && favoriteVideoIds.has(t.id);
       return `
         <div class="track-row ${playable ? "" : "is-empty"}" data-index="${i}" data-video-id="${playable ? escapeHtml(t.id) : ""}">
           <span class="track-num">${i + 1}</span>
@@ -121,28 +49,16 @@ function renderTrackList() {
             ${escapeHtml(normalizeTitle(t.title))}
             ${t.note ? `<span class="badge-status badge-status--placeholder ml-1" title="${escapeHtml(t.note)}">${escapeHtml(t.note)}</span>` : ""}
           </span>
-          ${
-            playable
-              ? `<button class="heart-btn ${isFav ? "is-active" : ""}" data-video-id="${escapeHtml(t.id)}" data-title="${escapeHtml(t.title)}">${isFav ? "♥" : "♡"}</button>`
-              : `<span class="text-[10px] text-[var(--muted)]">準備中</span>`
-          }
+          ${playable ? "" : `<span class="text-[10px] text-[var(--muted)]">準備中</span>`}
         </div>
       `;
     })
     .join("");
 
   el.querySelectorAll(".track-row:not(.is-empty)").forEach((row) => {
-    row.addEventListener("click", (e) => {
-      if (e.target.classList.contains("heart-btn")) return;
+    row.addEventListener("click", () => {
       const idx = parseInt(row.dataset.index, 10);
       playTrackAt(idx);
-    });
-  });
-
-  el.querySelectorAll(".heart-btn").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      toggleFavorite(btn.dataset.videoId, btn.dataset.title, btn);
     });
   });
 }
@@ -227,12 +143,7 @@ async function main() {
     return;
   }
   buildDefaultQueue();
-
-  onAuthReady(async (user) => {
-    currentUser = user;
-    favoriteVideoIds = await fetchFavorites();
-    renderTrackList();
-  });
+  renderTrackList();
 
   document.getElementById("shuffle-btn").addEventListener("click", shuffleQueue);
   document.getElementById("next-btn").addEventListener("click", playNext);

@@ -1,32 +1,31 @@
 # 南條愛乃セトリアーカイブ
 
 南條愛乃さんのワンマンライブ・ツアーのセットリストをまとめる静的サイトです。
-下川みくに版と同じ思想（静的サイト・ビルドツールなし・HTML + Tailwind(CDN) + Vanilla JS・Supabaseバックエンド）で作られていますが、
+下川みくに版と同じ思想（静的サイト・ビルドツールなし・HTML + Tailwind(CDN) + Vanilla JS）で作られていますが、
 今回は「1ツアー＝複数会場」という構造に対応しています。
+
+**ログイン・お気に入り・参加記録・マイセトリ機能は無し**（お気に入り・参加記録・マイセトリ作成といった
+アカウント機能は当初検討していましたが、想定ファン数が多く、閲覧者本人以外も見ることになるサイトの
+性質上、ログイン機能自体を持たないシンプルな「閲覧・再生・検索」専用サイトにしています）。
+そのためSupabaseなどのバックエンドは一切使わず、完全に静的なファイルだけで動きます。
 
 ## ディレクトリ構成
 
 ```
 index.html          … ツアー一覧 + 曲名検索
-tour.html            … ツアー詳細（会場一覧・参加記録トグル）
-player.html          … セトリ再生（?id=liveId または ?mysetlist=uuid）
-mypage.html          … 表示名編集・参加記録・お気に入り一覧
-mysetlist.html       … マイセトリの作成・編集・削除
+tour.html            … ツアー詳細（会場一覧）
+player.html          … セトリ再生（?id=liveId）
 
 css/style.css        … Tailwindに重ねる独自トークン（Direction C「透明感・ガーデン」）
-js/common.js         … Supabase初期化・認証・normalize/dedupeKey等の共通処理
+js/common.js         … normalize/dedupeKey・manifest/live読み込みなどの共通処理
 js/search.js         … 曲名検索（全公演を横断し、ツアー/会場/日付を結果に表示）
 js/index.js          … index.html用ロジック
 js/tour.js           … tour.html用ロジック
 js/player.js         … player.html用ロジック（YouTube IFrame API）
-js/mypage.js         … mypage.html用ロジック
-js/mysetlist.js      … mysetlist.html用ロジック
-js/supabase-config.js… Supabaseの接続情報（要編集）
 
 data/manifest.json   … ツアー一覧＋各ツアーの会場一覧（軽量・index.htmlが読む）
 data/lives/{tourId}/{venueId}.json … 公演ごとのフルデータ（tourId/venueName/date/tracks）
 
-sql/schema.sql        … Supabaseのテーブル定義（favorites / attended / mysetlists / mysetlist_tracks）
 scripts/generate-manifest.js … data/lives/ 配下を再帰的に走査してmanifest.jsonを再生成するNode製の補助スクリプト
 ```
 
@@ -35,7 +34,7 @@ scripts/generate-manifest.js … data/lives/ 配下を再帰的に走査してma
 - `tourId`（例: `2024_fantasic_garden`）… ツアー単位のID
 - `venueId`（例: `osaka`）… ツアー内の会場ID
 - `liveId`（`{tourId}_{venueId}`、例: `2024_fantasic_garden_osaka`）… 公演単位のID。
-  お気に入り・参加記録などは全てこの `liveId` を主キーとして扱う。
+  `player.html?id={liveId}` で該当公演のセトリを再生する。
 
 `data/manifest.json` はツアー・会場の一覧だけを持つ軽量なファイルで、index.html はこれだけを読み込む。
 各会場のセットリスト本体は `data/lives/{tourId}/{venueId}.json` に分離してあり、tour.html → player.html と
@@ -56,71 +55,24 @@ node scripts/generate-manifest.js
 
 ## セットアップ
 
-1. Supabaseは新規プロジェクトを作らず、**下川みくにセトリサイトと同じSupabaseプロジェクトに相乗りする**
-   （Supabase無料枠は1アカウントにつきプロジェクト2件までのため。詳細は下記「Supabaseプロジェクトの相乗りについて」参照）。
-   そのプロジェクトのSQLエディタで `sql/schema.sql` を実行する。
-2. `js/supabase-config.js` に、その（下川みくにサイトと共通の）Project URL と
-   **Publishable key**（旧anon key相当）を入力する。クライアントに埋め込んでOK。
-3. Googleログインを設定する（下記「Googleログインの設定」参照）。
-4. Vercelにリポジトリを接続してデプロイする。
+このサイトはバックエンド不要の完全な静的サイトなので、特別なセットアップは不要です。
 
-## Supabaseプロジェクトの相乗りについて
+1. リポジトリをVercel（またはNetlifyなど）に接続してデプロイする。
+2. 以上。
 
-南條愛乃サイトは、下川みくにセトリサイトと**同じSupabaseプロジェクト**を共有している。
-そのため `sql/schema.sql` のテーブル名は全て `nanjo_` プレフィックス付き
-（`nanjo_favorites` / `nanjo_attended` / `nanjo_mysetlists` / `nanjo_mysetlist_tracks`）にしてあり、
-下川みくにサイト側のテーブル（プレフィックス無し）とは絶対に重複しないようにしてある。
-JS側（`js/common.js` 以外の各ページのJS）も全てこの `nanjo_` 付きテーブル名を参照するように揃えてある。
+## 下川みくに版から引き継いだ注意点・経緯
 
-- 認証（Supabase Auth）そのものも共有するが、これは実害がない。ログイン情報（ユーザーアカウント）は
-  共有されるだけで、お気に入り・参加記録・マイセトリなどのデータはテーブルが別なので混ざらない。
-- Authentication > URL Configuration の Redirect URLs には、下川みくにサイトのURLに**追加する形で**
-  南條愛乃サイトのURL（Vercelの本番URL）を登録する。既存のURLを削除しないこと。
-- 今後 `sql/schema.sql` を再実行・修正する際は、テーブル名が必ず `nanjo_` で始まっていることを
-  確認してから実行すること（`DROP TABLE IF EXISTS` があるため、万が一プレフィックス無しの名前で
-  実行すると下川みくにサイトの本物のデータが消えてしまう）。
-
-## Googleログインの設定
-
-下川みくに版はメールのマジックリンクだったが、南條愛乃版は想定ファン数がかなり多く、
-Supabase組み込みメール送信のレート制限やカスタムSMTPの準備が間に合わない可能性が高いため、
-**メール送信が発生しないGoogle OAuthログイン**に変更している。
-
-なお下川みくにサイトはメールのマジックリンクのままでよく、Google認証を有効化しても
-下川みくにサイト側の既存のログイン方法（メール）には影響しない（Authプロバイダーの追加は
-既存のプロバイダーを無効化するものではない）。共有プロジェクトで既にGoogleプロバイダーが
-設定済みなら、手順1・2（Google Cloud Console側の作業）は不要で、手順4（Redirect URLsへの追加）だけでよい。
-
-1. [Google Cloud Console](https://console.cloud.google.com/) でプロジェクトを作成し、
-   「APIとサービス」→「OAuth同意画面」を設定する（外部/公開、スコープは `email`・`profile`・`openid` のみでOK。
-   このレベルのスコープならGoogleの厳格な審査は不要）。
-2. 「認証情報」→「OAuth クライアント ID」を作成する（アプリケーションの種類: ウェブアプリケーション）。
-   承認済みのリダイレクトURIに、SupabaseのCallback URL
-   `https://<プロジェクトref>.supabase.co/auth/v1/callback` を追加する。
-3. 発行された クライアントID / クライアントシークレット を、Supabaseダッシュボードの
-   Authentication > Providers > Google に入力して有効化する。
-4. Authentication > URL Configuration の Site URL / Redirect URLs に、
-   Vercelの本番URL（例: `https://xxxx.vercel.app`）を追加する
-   （ここに登録されていないURLへはOAuthログイン後にリダイレクトされない）。
-
-表示名は、ログイン直後はGoogleアカウントの名前が自動で使われ、マイページから好きな表示名に変更できる
-（`user_metadata.display_name` として保存され、Googleの名前より優先される）。
-
-## 下川みくに版から引き継いだ注意点
-
-- **RLSだけでは`permission denied`になる**: `sql/schema.sql` は各テーブルについて
-  `DROP TABLE` → `CREATE TABLE` → `ENABLE ROW LEVEL SECURITY` → `CREATE POLICY` →
-  `GRANT ... TO authenticated` → `NOTIFY pgrst, 'reload schema'` の順で書いてある。
 - **Vercelの Clean URLs**: デプロイ後に内部リンクの`.html`が消えることがあるため、
   JSでリンクをセレクタ検索する場合は `href*="player.html?id="` のような拡張子依存の書き方をしない
   （このサイトはリンクをJSで動的に生成しているので基本的に影響は受けないが、今後手を入れる際は注意）。
-- **onAuthStateChangeの二重初期化**: `js/common.js` の `onAuthReady` / `initAuthWatcher` は、
-  認証状態が確定する前に登録されたコールバックと、確定後に登録されたコールバックの両方が
-  正しく一度ずつ呼ばれるように、`_authHasFired` / `_lastAuthUser` でリプレイする仕組みにしてある
-  （tour.html/player.htmlはmanifestやライブJSONのfetchを挟んでからauth callbackを登録するため、
-  素朴な実装だとタイミング次第で一覧が表示されない不具合が起きることを実装時に確認して対処済み）。
-- **メール送信を使わない**: 上記の通り、想定ファン数の多さからメールのマジックリンクではなく
-  Googleログインを採用している。Supabaseのメールレート制限やカスタムSMTPを気にする必要はない。
+- **ログイン機能は一度検討したが撤去した**: 開発の途中まではSupabase + Google OAuthによる
+  ログイン機能（お気に入り・参加記録・マイセトリ作成）を実装していたが、閲覧者が本人以外にも
+  多く想定されるサイトの性質上、アカウント管理の仕組み自体を持たない方針に変更した。
+  そのため `js/common.js` から認証関連の関数（`getSupabase`/`onAuthReady`/`renderAuthNav`等）は
+  全て削除してあり、`mypage.html`/`mysetlist.html`とそのJS、`sql/schema.sql`も削除済み。
+  もし将来的にログイン機能を復活させたい場合は、Supabaseプロジェクトを新規に用意するか、
+  下川みくにサイトと共有する場合はテーブル名を`nanjo_`プレフィックス付きにするなど、
+  既存の下川みくにサイトのデータと衝突しないようにすること。
 
 ## 曲データについて（要確認）
 
@@ -132,9 +84,9 @@ Supabase組み込みメール送信のレート制限やカスタムSMTPの準�
   参考にしたもので、**公式発表ではありません**。誤りがあれば該当の `data/lives/2024_fantasic_garden/*.json` を直接修正してください。
 - 5曲目・16曲目は公演ごとに異なる日替わり枠（キャラクターソング等）でした（曲名のみ表示し、
   歌唱キャラクター名は付けていません）:
-  - 愛知: 5曲目「藪の中のジンテーゼ」／16曲目「鏖鋸・シュルシャガナ」※16曲目は動画ID未確認
-  - 大阪: 5曲目「ジャーニーズ・トランク」／16曲目「SENSE OF DISTANCE」※16曲目は動画ID未確認
-  - 神奈川: 5曲目「iD*」※動画ID未確認／16曲目「この道をあなたと」
+  - 愛知: 5曲目「藪の中のジンテーゼ」／16曲目「鏖鋸・シュルシャガナ」
+  - 大阪: 5曲目「ジャーニーズ・トランク」／16曲目「SENSE OF DISTANCE」
+  - 神奈川: 5曲目「iD*」／16曲目「この道をあなたと」
 - それ以外の曲順（1-4, 6-15, 17-23）は3公演とも大阪公演の参戦記録をもとにした暫定のもので、
   実際に愛知・神奈川で同じだったかは未確認です。判明次第更新してください。
 

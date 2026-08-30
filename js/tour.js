@@ -1,8 +1,6 @@
 // ============================================================
-// tour.html: ツアー詳細（会場一覧・参加記録トグル）
+// tour.html: ツアー詳細（会場一覧）
 // ============================================================
-
-renderAuthNav();
 
 function getQueryParam(name) {
   return new URLSearchParams(window.location.search).get(name);
@@ -16,54 +14,6 @@ function statusBadge(status) {
     return `<span class="badge-status badge-status--fan-sourced">参戦記録ベース</span>`;
   }
   return `<span class="badge-status badge-status--placeholder">セットリスト確認中</span>`;
-}
-
-let currentUser = null;
-let attendedSet = new Set(); // live_id の集合
-
-async function fetchAttended(liveIds) {
-  if (!currentUser) return new Set();
-  const supabase = getSupabase();
-  const { data, error } = await supabase
-    .from("nanjo_attended")
-    .select("live_id")
-    .in("live_id", liveIds);
-  if (error) {
-    console.error(error);
-    return new Set();
-  }
-  return new Set(data.map((r) => r.live_id));
-}
-
-async function toggleAttended(liveId, btn) {
-  if (!currentUser) {
-    openLoginModal();
-    return;
-  }
-  const supabase = getSupabase();
-  const isAttended = attendedSet.has(liveId);
-
-  if (isAttended) {
-    const { error } = await supabase
-      .from("nanjo_attended")
-      .delete()
-      .eq("user_id", currentUser.id)
-      .eq("live_id", liveId);
-    if (!error) {
-      attendedSet.delete(liveId);
-      btn.classList.remove("is-active");
-      btn.textContent = "参加記録をつける";
-    }
-  } else {
-    const { error } = await supabase
-      .from("nanjo_attended")
-      .insert({ user_id: currentUser.id, live_id: liveId });
-    if (!error) {
-      attendedSet.add(liveId);
-      btn.classList.add("is-active");
-      btn.textContent = "参加済み ✓";
-    }
-  }
 }
 
 async function main() {
@@ -98,44 +48,26 @@ async function main() {
     <p class="text-sm text-[var(--muted)]">${tour.year || ""} ・ 全${tour.venues.length}公演</p>
   `;
 
-  const liveIds = tour.venues.map((v) => v.liveId);
-
-  onAuthReady(async (user) => {
-    currentUser = user;
-    attendedSet = await fetchAttended(liveIds);
-    renderVenues();
-  });
-
-  function renderVenues() {
-    listEl.innerHTML = tour.venues
-      .slice()
-      .sort((a, b) => (a.date < b.date ? -1 : 1))
-      .map((v) => {
-        const isAttended = attendedSet.has(v.liveId);
-        return `
-        <div class="venue-row px-2 sm:px-3">
-          <div>
-            <p class="text-sm">${escapeHtml(v.prefecture ? v.prefecture + " ／ " : "")}${escapeHtml(v.place)}</p>
-            <div class="flex items-center gap-2 mt-1">
-              <span class="text-xs text-[var(--muted)] font-variant-numeric-tabular">${formatDate(v.date, "long")}</span>
-              ${statusBadge(v.setlistStatus)}
-            </div>
-          </div>
-          <div class="flex items-center gap-2 shrink-0">
-            <button data-live-id="${escapeHtml(v.liveId)}" class="attend-btn btn-outline text-xs ${isAttended ? "is-active" : ""}">
-              ${isAttended ? "参加済み ✓" : "参加記録をつける"}
-            </button>
-            <a href="player.html?id=${encodeURIComponent(v.liveId)}" class="btn-garden text-xs">セトリを見る →</a>
+  listEl.innerHTML = tour.venues
+    .slice()
+    .sort((a, b) => (a.date < b.date ? -1 : 1))
+    .map((v) => {
+      return `
+      <div class="venue-row px-2 sm:px-3">
+        <div>
+          <p class="text-sm">${escapeHtml(v.prefecture ? v.prefecture + " ／ " : "")}${escapeHtml(v.place)}</p>
+          <div class="flex items-center gap-2 mt-1">
+            <span class="text-xs text-[var(--muted)] font-variant-numeric-tabular">${formatDate(v.date, "long")}</span>
+            ${statusBadge(v.setlistStatus)}
           </div>
         </div>
-      `;
-      })
-      .join("");
-
-    listEl.querySelectorAll(".attend-btn").forEach((btn) => {
-      btn.addEventListener("click", () => toggleAttended(btn.dataset.liveId, btn));
-    });
-  }
+        <div class="flex items-center gap-2 shrink-0">
+          <a href="player.html?id=${encodeURIComponent(v.liveId)}" class="btn-garden text-xs">セトリを見る →</a>
+        </div>
+      </div>
+    `;
+    })
+    .join("");
 }
 
 main();

@@ -2,8 +2,6 @@
 // index.html: ツアー一覧 + 曲名検索
 // ============================================================
 
-renderAuthNav();
-
 async function renderTourList() {
   const el = document.getElementById("tour-list");
   let manifest;
