@@ -174,8 +174,32 @@ async function main() {
   buildDefaultQueue();
   renderTrackList();
 
-  document.getElementById("shuffle-btn").addEventListener("click", shuffleQueue);
-  document.getElementById("next-btn").addEventListener("click", playNext);
+  const shuffleBtn = document.getElementById("shuffle-btn");
+  const nextBtn = document.getElementById("next-btn");
+
+  if (playQueue.length === 0) {
+    // 再生できる曲が1曲も無い場合、空のYouTube埋め込みを表示すると
+    // 押してもエラーになるだけで紛らわしいので、案内文だけを表示する。
+    document.getElementById("yt-player").outerHTML = `
+      <div class="w-full h-full flex items-center justify-center text-center text-sm text-[var(--muted)] px-6">
+        この公演の動画はまだ準備中です。<br />見つかり次第、追加します。
+      </div>
+    `;
+    shuffleBtn.disabled = true;
+    nextBtn.disabled = true;
+    shuffleBtn.classList.add("opacity-50", "pointer-events-none");
+    nextBtn.classList.add("opacity-50", "pointer-events-none");
+    return;
+  }
+
+  // YouTube IFrame API はここで初めて読み込む
+  // （再生できる曲が無いときは読み込む必要が無いため）。
+  const ytScript = document.createElement("script");
+  ytScript.src = "https://www.youtube.com/iframe_api";
+  document.head.appendChild(ytScript);
+
+  shuffleBtn.addEventListener("click", shuffleQueue);
+  nextBtn.addEventListener("click", playNext);
 }
 
 main();
